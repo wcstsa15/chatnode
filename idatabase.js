@@ -1,16 +1,33 @@
 var mysql = require('mysql')
-var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'sigodin',
-  password: ''
-})
+    
+var connection;
 
-connection.connect()
+module.exports = {
+    
+  connect: function () {
+    connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'sigodin',
+    password: ''
+    })
+    connection.connect()    
 
-connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
-  if (err) throw err
+  },
+  
+    query: function (QueryString) {
+        connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
+            if (err) throw err
 
-  console.log('The solution is: ', rows[0].solution)
-})
+        console.log('The solution is: ', rows[0].solution)
+    })
+},
 
-connection.end()
+  
+  disconnect: function () {
+    connection.end()      
+  }
+};
+
+
+
+

@@ -1,5 +1,6 @@
 // Integrate.js
 //
+var dbconn = require("./idatabase.js");
 const assert = require('assert');
 
 //Establish Infrastructure Integrity
@@ -11,6 +12,13 @@ assert(process.versions.node == RequiredNodeVersion, 'Wrong Node Version' + proc
 //Establish Libraries/Dependencies Integrity
 //
 //Establish Application Structure Integrity
+
+//DB
+dbconn.connect();
+dbconn.query("");
+dbconn.disconnect();    
+
+
 
 // Assert Modules
 
